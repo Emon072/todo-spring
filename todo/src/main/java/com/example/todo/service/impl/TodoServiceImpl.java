@@ -6,6 +6,7 @@ import com.example.todo.service.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -16,8 +17,20 @@ public class TodoServiceImpl implements TodoService {
         this.todoRepository = todoRepository;
     }
 
-    @Override
     public List<Todo> getAllTodos() {
-        return todoRepository.findAll();
+        List<Todo> todos = todoRepository.findAll();
+        // Sort todos by id in descending order
+        Collections.sort(todos, (a, b) -> Long.compare(b.getId(), a.getId()));
+        return todos;
+    }
+
+    @Override
+    public Todo saveTodoToDatabase(Todo todo) {
+        return this.todoRepository.save(todo);
+    }
+
+    @Override
+    public void deleteTodoFromDatabase(Long id) {
+        this.todoRepository.deleteById(id);
     }
 }

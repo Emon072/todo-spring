@@ -5,7 +5,7 @@ import com.example.todo.service.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,12 +17,29 @@ public class TodoController {
     private List<Todo> todos;
     public TodoController(TodoService todoService) {
         this.todoService = todoService;
-        this.todos = todoService.getAllTodos();
+
     }
 
     @GetMapping("/")
     public String index(Model model) {
+        // Retrieve todos from the service
+        this.todos = todoService.getAllTodos();
         model.addAttribute("todos", todos);
+        model.addAttribute("newTodo", new Todo());
         return "index";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteTodo(@PathVariable Long id) {
+        this.todoService.deleteTodoFromDatabase(id);
+        return "redirect:/";
+    }
+
+    @PostMapping("/createNewTodo")
+    public String saveTodo(@ModelAttribute("newTodo") Todo newTodo) {
+        newTodo.setCompleted(false);
+//        System.out.println("this is selected " +newTodo.getImportant());
+        this.todoService.saveTodoToDatabase(newTodo);
+        return "redirect:/";
     }
 }

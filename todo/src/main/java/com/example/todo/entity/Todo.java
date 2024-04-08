@@ -2,10 +2,7 @@ package com.example.todo.entity;
 
 import jakarta.persistence.*;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.Date;
 
 @Entity
 @Table(name = "todos")
@@ -15,21 +12,26 @@ public class Todo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column( nullable = false)
+    @Column(nullable = false)
     private String title;
-    @Column(nullable = false, length = 2000) // Adjust the length as needed
+
+    @Column(nullable = false, length = 2000)
     private String description;
-    @Column( nullable = false)
-    private Date dueDate;
+
+    @Column(nullable = false)
+    private LocalDate dueDate;
+
     private Boolean isCompleted;
     private int important;
-    private Date updatedDate;
+
+    private LocalDate updatedDate; // Change type to LocalDate
+
     private String dir;
 
     public Todo() {
     }
 
-    public Todo(String title, String description, Date dueDate, Boolean isCompleted, int important, Date updatedDate, String dir) {
+    public Todo(String title, String description, LocalDate dueDate, Boolean isCompleted, int important, LocalDate updatedDate, String dir) {
         this.title = title;
         this.description = description;
         this.dueDate = dueDate;
@@ -39,6 +41,7 @@ public class Todo {
         this.dir = dir;
     }
 
+    // Getters and setters
     public Long getId() {
         return id;
     }
@@ -64,10 +67,10 @@ public class Todo {
     }
 
     public LocalDate getDueDate() {
-        return dueDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        return dueDate;
     }
 
-    public void setDueDate(Date dueDate) {
+    public void setDueDate(LocalDate dueDate) {
         this.dueDate = dueDate;
     }
 
@@ -87,11 +90,11 @@ public class Todo {
         this.important = important;
     }
 
-    public Date getUpdatedDate() {
+    public LocalDate getUpdatedDate() {
         return updatedDate;
     }
 
-    public void setUpdatedDate(Date updatedDate) {
+    public void setUpdatedDate(LocalDate updatedDate) {
         this.updatedDate = updatedDate;
     }
 

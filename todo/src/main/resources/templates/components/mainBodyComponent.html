@@ -29,7 +29,8 @@
                                 </th:block>
                             </th:block>
 
-                            <i class="bi bi-trash-fill"></i>
+                            <a th:href="@{/delete/{id}(id=${todo.getId()})}"><i class="bi bi-trash-fill"></i></a>
+
                             <i class="bi bi-pencil-square"></i>
                         </div>
                     </div>
