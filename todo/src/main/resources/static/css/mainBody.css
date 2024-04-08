@@ -1,0 +1,74 @@
+.mainBody{
+    /*height: 200vh;*/
+    margin-left: 250px;
+    /*margin-right: 250px;*/
+    background-color: #FFFFFF;
+    color: #333333;
+}
+/* Card */
+.mainBody-card {
+    margin: 10px 0px;
+    background-color: #F5F7FA;
+    border: 1px solid #E8E8E8;
+    color: #333333;
+    /*height: 250px;*/
+    width: 280px;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add box shadow */
+    transition: box-shadow 0.3s ease; /* Add transition effect */
+}
+.line{
+    border-top: 1px dotted #333333;
+    margin-bottom: 20px;
+}
+/* Hover effect */
+.mainBody-card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Change box shadow on hover */
+}
+
+/* Button */
+.mainBody-card-button {
+    background: linear-gradient(to right, #ffd57b, #fba006);
+    color: #FFFFFF;
+    padding: 2px 20px;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+}
+.mainBody-card-button:focus{
+    border: none;
+    outline: none;
+}
+
+.mainBody-title{
+    font-weight: 600;
+    font-size: 20px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.mainBody-details {
+    height: 100px;
+    color: grey;
+    overflow: hidden; /* Only hide overflow along y-axis */
+    /*white-space: nowrap; !* Prevent text wrapping *!*/
+    text-overflow: ellipsis; /* Show ellipsis (...) for overflowed text */
+}
+
+.mainBody-date{
+    color: #FD9A0A;
+    font-size: 20px;
+}
+.mainBody-date i{
+    margin-right: 5px;
+}
+
+.mainBody-options-button i{
+    font-size: 20px;
+    margin: 0px 2px;
+    color: #FD9A0A;
+}
+
+.mainBody-options-button div{
+    font-size: 18px;
+}

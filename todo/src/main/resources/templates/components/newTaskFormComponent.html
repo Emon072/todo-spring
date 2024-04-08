@@ -1,0 +1,50 @@
+<form th:fragment="content" >
+    <div class="form-group mb-3">
+        <label for="title">Note Title</label>
+        <input type="text" class="form-control" id="title" placeholder="Note Title" />
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="description">Description</label>
+        <textarea class="form-control" id="description" rows="3"></textarea>
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="dueDate">Select Date</label>
+        <div class="date-picker-wrapper">
+            <input type="text" class="form-control custom-date-picker" id="dueDate" placeholder="MM/DD/YYYY" />
+            <i class="calendar-icon"></i>
+        </div>
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="completed">Completion Status</label>
+        <select class="form-select" id="completed">
+            <option value="true">Completed</option>
+            <option value="false">Uncompleted</option>
+        </select>
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="important">Importance</label>
+        <select class="form-select" id="important">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="dir">Directory</label>
+        <select class="form-select" id="dir">
+            <option value="Directory 1">Directory 1</option>
+            <option value="Directory 2">Directory 2</option>
+            <option value="Directory 3">Directory 3</option>
+        </select>
+    </div>
+
+    <div class="button-container">
+        <button type="submit" class="btn btn-primary submit-btn">Submit</button>
+        <button type="button" class="btn btn-secondary clear-btn">Clear</button>
+    </div>
+</form>

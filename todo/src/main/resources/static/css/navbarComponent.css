@@ -1,0 +1,82 @@
+/* Sidebar */
+.sidebar {
+    background-color: #F5F7FA;
+    color: #333333;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100%;
+}
+.sidebar-options{
+    margin-top: 30px;
+}
+
+.sidebar-item {
+    padding: 10px 0px;
+    cursor: pointer;
+    display: flex;
+    font-size: 18px;
+    /*font-weight: 100;*/
+    font-family: Arial, serif;
+    transition: background-color 0.3s, color 0.3s;
+    /*font-weight: 400;*/
+}
+
+.sidebar-item.active {
+    position: relative;
+    background: linear-gradient(135deg, #fafafa, #75b0ff);
+    /*color: #FFFFFF; !* White text color for better contrast *!*/
+}
+.sidebar-item.active::after{
+    content: "";
+    height: 100%;
+    width: 10px;
+    position: absolute;
+    top:0;
+    right: 0;
+    background-color: #000dff;
+}
+
+.sidebar-item:hover {
+    background-color: #CCE5FF;
+    color: #007BFF;
+}
+.sidebar-item i {
+    color: #007BFF; /* Sidebar item icon color */
+}
+
+.sidebar-title{
+    margin-top: 10px;
+    font-family: cursive;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.sidebar-button {
+    background-color: #007BFF;
+    color: #FFFFFF;
+    border: 2px solid #007BFF; /* Button border color */
+    border-radius: 5px;
+    padding: 10px 20px;
+    width: 100%;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.sidebar-button:hover {
+    background-color: #0056b3; /* Button hover effect color */
+    border-color: #0056b3; /* Button border hover effect color */
+}
+
+.sidebar-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5); /* Focus state border color */
+}
+
+.sidebar-button:active {
+    background-color: #004280; /* Button active state color */
+    border-color: #004280; /* Button border active state color */
+}
