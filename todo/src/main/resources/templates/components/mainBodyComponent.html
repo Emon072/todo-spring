@@ -2,8 +2,10 @@
     <div class="row">
         <!--/*@thymesVar id="todos" type=""*/-->
         <th:block th:each="todo : ${todos}">
-            <div class="col">
-                <div class="mainBody-card">
+            <div class="col" style="position: relative">
+                <div class="mainBody-card" style="margin-top: 35px">
+                    <div class="mainBody-showDir" style="text-align: center" th:text="${todo.getDir()}"></div>
+
                     <p class="mainBody-title" th:text="${todo.getTitle()}"></p>
                     <p class="mainBody-details" th:text="${todo.getDescription()}"></p>
                     <div class="mainBody-date" style="display: flex">
