@@ -1,36 +1,34 @@
 <div class="col sidebar" th:fragment="content">
     <div class="text-center">
         <p class="sidebar-title">Todo</p>
-
         <button class="sidebar-button" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">New Task</button>
-
     </div>
     <div class="sidebar-options">
-        <div class="sidebar-item row">
+        <div class="sidebar-item row" id="today" onclick="toggleActive(this)">
             <div class="col-1"><i class="bi bi-house-door-fill"></i></div>
             <div class="col">Today's Tasks</div>
         </div>
-        <div class="sidebar-item active row">
+        <div class="sidebar-item row active" id="all" onclick="toggleActive(this)">
             <div class="col-1"><i class="bi bi-info-circle-fill"></i></div>
             <div class="col">All Tasks</div>
         </div>
-        <div class="sidebar-item row">
+        <div class="sidebar-item row" id="important" onclick="toggleActive(this)">
             <div class="col-1"><i class="bi bi-sliders"></i></div>
             <div class="col">Important Tasks</div>
         </div>
-        <div class="sidebar-item row">
+        <div class="sidebar-item row" id="completed" onclick="toggleActive(this)">
             <div class="col-1"><i class="bi bi-envelope-check-fill"></i></div>
             <div class="col">Completed Tasks</div>
         </div>
-        <div class="sidebar-item row">
+        <div class="sidebar-item row" id="pending" onclick="toggleActive(this)">
             <div class="col-1"><i class="bi bi-envelope-open-fill"></i></div>
             <div class="col">Pending Tasks</div>
         </div>
-        <div class="sidebar-item row">
+        <div class="sidebar-item row" id="dir" onclick="toggleActive(this)">
             <div class="col-1"><i class="bi bi-compass-fill"></i></div>
             <div class="col">Directory</div>
         </div>
-
-
     </div>
 </div>
+
+

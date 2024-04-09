@@ -1,5 +1,5 @@
-<!--/*@thymesVar id="newTodo" type="Todo"*/-->
-<form th:fragment="content" th:action="@{/createNewTodo}" th:object="${newTodo}" method="post" >
+<form id="replaceIt" th:fragment="content" th:action="@{/createNewTodo}" th:object="${newTodo}" method="post" >
+    <p th:text="${newTodo.getTitle()}"></p>
     <div class="form-group mb-3">
         <label for="title">Note Title</label>
         <input type="text" class="form-control" id="title" placeholder="Note Title" name="title" th:field="*{title}" />
@@ -13,18 +13,11 @@
     <div class="form-group mb-3">
         <label for="dueDate">Select Date</label>
         <div class="date-picker-wrapper">
-            <input type="date" class="form-control custom-date-picker" id="dueDate" placeholder="MM/DD/YYYY" name="dueDate" th:field="*{dueDate}" th:value="${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}" />
+            <input type="date" class="form-control custom-date-picker" id="dueDate" th:value="*{dueDate}" name="dueDate" />
             <i class="calendar-icon"></i>
         </div>
     </div>
 
-<!--    <div class="form-group mb-3">-->
-<!--        <label for="completed">Completion Status</label>-->
-<!--        <select class="form-select" id="completed" name="isCompleted">-->
-<!--            <option th:value="true" th:selected="${isCompleted} == true">Completed</option>-->
-<!--            <option th:value="false" th:selected="${isCompleted} == false">Uncompleted</option>-->
-<!--        </select>-->
-<!--    </div>-->
 
     <div class="form-group mb-3">
         <label for="important">Importance</label>
@@ -38,9 +31,9 @@
     <div class="form-group mb-3">
         <label for="dir">Directory</label>
         <select class="form-select" id="dir" name="dir" th:field="*{dir}">
-            <option value="Directory 1">Directory 1</option>
-            <option value="Directory 2">Directory 2</option>
-            <option value="Directory 3">Directory 3</option>
+            <option value="Main">Main</option>
+            <option value="Job">Job</option>
+            <option value="Study">Study</option>
         </select>
     </div>
 

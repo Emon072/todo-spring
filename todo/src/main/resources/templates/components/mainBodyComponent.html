@@ -29,9 +29,11 @@
                                 </th:block>
                             </th:block>
 
+
                             <a th:href="@{/delete/{id}(id=${todo.getId()})}"><i class="bi bi-trash-fill"></i></a>
 
-                            <i class="bi bi-pencil-square"></i>
+                            <div th:attr="hx-get=@{/update/{id}(id=${todo.getId()})}"  hx-trigger="click" hx-target="#replaceIt"><i class="bi bi-pencil-square" data-bs-toggle="modal" data-bs-target="#exampleModal"></i></div>
+
                         </div>
                     </div>
                 </div>
