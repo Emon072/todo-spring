@@ -6,6 +6,18 @@
     color: #333333;
 }
 /* Card */
+.mainBody-title-main{
+    margin: 20px 2px;
+    font-size: 30px;
+    font-weight: bold;
+    font-family: "Liberation Mono", sans-serif;
+}
+.mainBody-line{
+    height: 10px;
+    width: 100%;
+    border-bottom: 2px dotted #333333;
+    margin-bottom: 10px;
+}
 .mainBody-card {
     margin: 10px 0px;
     background-color: #F5F7FA;
@@ -19,7 +31,7 @@
     transition: box-shadow 0.3s ease; /* Add transition effect */
 }
 .line{
-    border-top: 1px dotted #333333;
+    border-top: 2px dotted #333333;
     margin-bottom: 20px;
 }
 /* Hover effect */

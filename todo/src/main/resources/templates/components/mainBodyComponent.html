@@ -1,4 +1,8 @@
 <div class="col mainBody" th:fragment="content">
+    <div class="row mainBody-title-main" >
+        <div th:text = "${mainBodyTitle}"></div>
+        <div class="mainBody-line"></div>
+    </div>
     <div class="row">
         <!--/*@thymesVar id="todos" type=""*/-->
         <th:block th:each="todo : ${todos}">
@@ -15,7 +19,9 @@
                     <div class="line"></div>
                     <div class="row mainBody-options-button">
                         <div class="col-4">
-                            <button class="mainBody-card-button" th:text="${todo.getCompleted()}?'Completed':'Pending'" ></button>
+                            <form th:action="@{/update-completed/{id}(id=${todo.id})}" method="post">
+                                <button class="mainBody-card-button"  th:text="${todo.completed} ? 'Completed' : 'Pending'"></button>
+                            </form>
                         </div>
                         <div class="col justify-content-end align-items-end" style="display: flex">
 

@@ -13,3 +13,7 @@
 
 /* Card View */
 
+a {
+    color: inherit; /* Use the default text color */
+    text-decoration: none; /* Remove underline */
+}

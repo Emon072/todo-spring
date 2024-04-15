@@ -4,27 +4,27 @@
         <button class="sidebar-button" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">New Task</button>
     </div>
     <div class="sidebar-options">
-        <div class="sidebar-item row" id="today" onclick="toggleActive(this)">
+        <a th:href="@{/today}"><div th:classappend="${currentPage == 0} ? 'sidebar-item row active' : 'sidebar-item row'" id="today">
             <div class="col-1"><i class="bi bi-house-door-fill"></i></div>
             <div class="col">Today's Tasks</div>
-        </div>
-        <div class="sidebar-item row active" id="all" onclick="toggleActive(this)">
+        </div></a>
+        <a th:href="@{/all}"><div th:classappend="${currentPage == 1} ? 'sidebar-item row active' : 'sidebar-item row'" id="all">
             <div class="col-1"><i class="bi bi-info-circle-fill"></i></div>
             <div class="col">All Tasks</div>
-        </div>
-        <div class="sidebar-item row" id="important" onclick="toggleActive(this)">
+        </div></a>
+        <div class="sidebar-item row" id="important">
             <div class="col-1"><i class="bi bi-sliders"></i></div>
             <div class="col">Important Tasks</div>
         </div>
-        <div class="sidebar-item row" id="completed" onclick="toggleActive(this)">
+        <a th:href="@{/completed}"><div th:classappend="${currentPage == 2} ? 'sidebar-item row active' : 'sidebar-item row'"  id="completed">
             <div class="col-1"><i class="bi bi-envelope-check-fill"></i></div>
             <div class="col">Completed Tasks</div>
-        </div>
-        <div class="sidebar-item row" id="pending" onclick="toggleActive(this)">
+        </div> </a>
+        <a th:href="@{/pending}"><div th:classappend="${currentPage == 3} ? 'sidebar-item row active' : 'sidebar-item row'"  id="pending">
             <div class="col-1"><i class="bi bi-envelope-open-fill"></i></div>
             <div class="col">Pending Tasks</div>
-        </div>
-        <div class="sidebar-item row" id="dir" onclick="toggleActive(this)">
+        </div></a>
+        <div class="sidebar-item row" id="dir">
             <div class="col-1"><i class="bi bi-compass-fill"></i></div>
             <div class="col">Directory</div>
         </div>
