@@ -125,8 +125,9 @@ public class TodoController {
 
     @PostMapping("/createNewTodo")
     public String saveTodo(@ModelAttribute("newTodo") Todo newTodo ) {
-        Todo current = this.todoService.getTodoById(currentId);
+
         if (currentId!=-1){
+            Todo current = this.todoService.getTodoById(currentId);
             newTodo.setId(currentId);
             newTodo.setCompleted(current.getCompleted());
         }
