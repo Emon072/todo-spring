@@ -12,10 +12,10 @@
             <div class="col-1"><i class="bi bi-info-circle-fill"></i></div>
             <div class="col">All Tasks</div>
         </div></a>
-        <div class="sidebar-item row" id="important">
+        <a th:href="@{/important}"><div th:classappend="${currentPage == 4} ? 'sidebar-item row active' : 'sidebar-item row'"  id="important">
             <div class="col-1"><i class="bi bi-sliders"></i></div>
             <div class="col">Important Tasks</div>
-        </div>
+        </div></a>
         <a th:href="@{/completed}"><div th:classappend="${currentPage == 2} ? 'sidebar-item row active' : 'sidebar-item row'"  id="completed">
             <div class="col-1"><i class="bi bi-envelope-check-fill"></i></div>
             <div class="col">Completed Tasks</div>

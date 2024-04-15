@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Controller
@@ -116,6 +117,22 @@ public class TodoController {
         return "pending";
     }
 
+    @GetMapping("/important")
+    public String important(Model model) {
+        List < Todo > importantTodo = todos;
+
+        Collections.sort(importantTodo , (a , b) -> Integer.compare(b.getImportant() , a.getImportant()));
+        model.addAttribute("mainBodyTitle", "Sorted Tasks by Importance is : " + importantTodo.size());
+
+        model.addAttribute("todos", importantTodo);
+
+        model.addAttribute("newTodo", new Todo());
+
+        model.addAttribute("currentPage" , 4);
+        this.currentPage = 4;
+        return "important";
+    }
+
     @GetMapping("/all")
     private String getAllTodos(){
         todos = todoService.getAllTodos();
@@ -142,6 +159,7 @@ public class TodoController {
         if (this.currentPage==0) return "redirect:/today";
         else if (this.currentPage==2) return "redirect:/completed";
         else if (this.currentPage==3) return  "redirect:/pending";
+        else if (this.currentPage==4) return "redirect:/important";
 
         return "redirect:/all";
     }
@@ -156,6 +174,7 @@ public class TodoController {
         if (this.currentPage==0) return "redirect:/today";
         else if (this.currentPage==2) return "redirect:/completed";
         else if (this.currentPage==3) return  "redirect:/pending";
+        else if (this.currentPage==4) return "redirect:/important";
 
         return "redirect:/all";
     }
@@ -171,6 +190,7 @@ public class TodoController {
         if (this.currentPage==0) return "redirect:/today";
         else if (this.currentPage==2) return "redirect:/completed";
         else if (this.currentPage==3) return  "redirect:/pending";
+        else if (this.currentPage==4) return "redirect:/important";
 
         return "redirect:/all";
     }
