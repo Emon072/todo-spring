@@ -1,2 +1,16 @@
 databaseChangeLog:
-  - 
+  databaseChangeLog:
+    - changeSet:
+        id: First_update
+        author: Scorpius72
+        changes:
+          - addColumn:
+              tableName: todos
+              columns:
+                - column:
+                    name: updated_date
+                    type: date
+                - column:
+                    name: dir
+                    type: varchar(255)
+  
