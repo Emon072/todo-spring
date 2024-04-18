@@ -4,8 +4,12 @@
             <input class="form-control mr-sm-2" type="search" placeholder="Search here..." aria-label="Search" id="search">
         </div>
     </div>
-    <div class="row mainBody-title-main" >
+    <div class="row mainBody-title-main" id="main-title" >
         <div th:text = "${mainBodyTitle}"></div>
+        <div class="mainBody-line"></div>
+    </div>
+    <div class="row mainBody-title-main" id="search-title"  style="display: none">
+        <div>Search Results: </div>
         <div class="mainBody-line"></div>
     </div>
     <div class="row" id="result">
@@ -57,9 +61,18 @@
     <script>
         const search = document.getElementById('search');
         const resultDiv = document.getElementById('result');
+        const mainTitle = document.getElementById('main-title');
+        const searchTitle = document.getElementById('search-title');
         function handleSearchInputChange(){
             const inputValue = search.value;
-            // console.log((inputValue));
+            if (inputValue.length>0){
+                mainTitle.style.cssText = "display:none";
+                searchTitle.style.cssText = "display:block";
+            }
+            else{
+                searchTitle.style.cssText = "display:none";
+                mainTitle.style.cssText = "display:block";
+            }
             fetch('/search?query='+inputValue)
                 .then(function (response){
                     if(!response.ok){
