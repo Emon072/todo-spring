@@ -5,6 +5,15 @@
     background-color: #FFFFFF;
     color: #333333;
 }
+
+.mainBody-search-bar{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.mainBody-search-bar input{
+    padding: 10px;
+}
+
 /* Card */
 .mainBody-title-main{
     margin: 20px 2px;

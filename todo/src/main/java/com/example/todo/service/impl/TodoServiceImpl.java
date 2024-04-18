@@ -20,7 +20,7 @@ public class TodoServiceImpl implements TodoService {
     public List<Todo> getAllTodos() {
         List<Todo> todos = todoRepository.findAll();
         // Sort todos by id in descending order
-        Collections.sort(todos, (a, b) -> Long.compare(b.getId(), a.getId()));
+        todos.sort((a, b) -> Long.compare(b.getId(), a.getId()));
         return todos;
     }
 

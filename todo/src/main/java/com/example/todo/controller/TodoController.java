@@ -2,14 +2,12 @@ package com.example.todo.controller;
 
 import com.example.todo.entity.Todo;
 import com.example.todo.service.TodoService;
-import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 @Controller
@@ -121,7 +119,7 @@ public class TodoController {
     public String important(Model model) {
         List < Todo > importantTodo = todos;
 
-        Collections.sort(importantTodo , (a , b) -> Integer.compare(b.getImportant() , a.getImportant()));
+        importantTodo.sort((a, b) -> Integer.compare(b.getImportant(), a.getImportant()));
         model.addAttribute("mainBodyTitle", "Sorted Tasks by Importance is : " + importantTodo.size());
 
         model.addAttribute("todos", importantTodo);
@@ -244,6 +242,40 @@ public class TodoController {
                 "    <button type=\"submit\" class=\"btn btn-primary submit-btn\">Submit</button>\n" +
                 "    <button type=\"button\" class=\"btn btn-secondary clear-btn\">Clear</button>\n" +
                 "</div>";
+    }
+
+    // this is for implementing the search result to the user
+
+    @GetMapping("/search")
+    @ResponseBody
+    public String searchTodo(@RequestParam String query) {
+        List<Todo> todos = todoService.getAllTodos(); // Assuming todoService has a method to fetch all todos
+        StringBuilder htmlContent = new StringBuilder();
+
+        for (Todo todo : todos) {
+            if (todo.getTitle().contains(query)){
+                htmlContent.append("<div class=\"col\" style=\"position: relative\">\n")
+                        .append("    <div class=\"mainBody-card\" style=\"margin-top: 35px\">\n")
+                        .append("        <div class=\"mainBody-showDir\" style=\"text-align: center\">"+todo.getDir()+"</div>\n")
+                        .append("        <p class=\"mainBody-title\">" + todo.getTitle() + "</p>\n")
+                        .append("        <p class=\"mainBody-details\">" + todo.getDescription() + "</p>\n")
+                        .append("        <div class=\"mainBody-date\" style=\"display: flex\">\n")
+                        .append("            <i class=\"bi bi-calendar-event-fill\"></i>\n")
+                        .append("            <p>" + todo.getDueDate() + "</p>\n")
+                        .append("        </div>\n")
+                        .append("        <div class=\"line\"></div>\n")
+                        .append("        <div class=\"row mainBody-options-button\">\n")
+                        .append("            <div class=\"col-4\">\n")
+                        .append("                <button class=\"mainBody-card-button\">" + (todo.getCompleted() ? "Completed" : "Pending") + "</button>\n")
+                        .append("            </div>\n")
+                        .append("        </div>\n")
+                        .append("    </div>\n")
+                        .append("</div>\n");
+            }
+
+        }
+
+        return htmlContent.toString();
     }
 
 
